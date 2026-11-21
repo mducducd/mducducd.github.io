@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html title=page.title %}
+<body data-page="{{ page.data_page }}">
+{% include topbar.html %}
+
+    <main class="{{ page.main_class | default: 'page-main' }}">
+{{ content }}
+    </main>
+
+{% include footer.html %}
+
+{% for src in page.extra_scripts %}    <script src="{{ src }}"></script>
+{% endfor %}    <script src="{{ page.base }}assets/site.js?v=21"></script>
+</body>
+</html>

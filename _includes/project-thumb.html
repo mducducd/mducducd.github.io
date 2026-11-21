@@ -1,0 +1,10 @@
+{%- assign p = include.p -%}
+{%- if p.href -%}
+<a class="project-thumb{% if p.thumb_class %} {{ p.thumb_class }}{% endif %}" href="{{ p.href }}" target="_blank" rel="noopener">
+                        <img src="{{ page.base }}{{ p.image }}" alt="{{ p.alt }}" loading="lazy">
+                    </a>
+{%- else -%}
+<div class="project-thumb{% if p.thumb_class %} {{ p.thumb_class }}{% endif %}">
+                        <img src="{{ page.base }}{{ p.image }}" alt="{{ p.alt }}" loading="lazy">
+                    </div>
+{%- endif -%}

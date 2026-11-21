@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+{% capture full_title %}{{ page.title }} - Duc Nguyen{% endcapture %}
+{% include head.html title=full_title %}
+<body class="essay-page" data-page="blog">
+    <main class="blog-post-page">
+        <a class="blog-back" href="../blog/">Back to blog</a>
+
+        <article class="blog-post blog-post--wide">
+            <header class="blog-post-header">
+                <p class="mini-label">Essay</p>
+                <h1>{{ page.title }}</h1>
+                <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %-d, %Y' }}</time>
+            </header>
+
+            <div class="learning-blog-content">
+{{ content }}
+            </div>
+        </article>
+    </main>
+    <script src="{{ page.base }}assets/site.js?v=21"></script>
+</body>
+</html>
