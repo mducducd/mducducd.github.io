@@ -4206,3 +4206,87 @@ body[data-page="home"] .foot-btn:hover {
     background: var(--band);
     color: var(--ink);
 }
+
+/* ---------- Typeface: Source Serif 4 for headings ----------
+   A sturdy editorial serif built for screens (larger x-height and stronger
+   strokes than the previous display serif), paired with Inter for text. */
+:root {
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+.page-intro h1,
+.home-kicker,
+.foot-title,
+.blog-post-header h1,
+.learning-blog-section h4,
+.blog-preview-grid .learning-blog-link span,
+.learning-blog-link span,
+.project-title,
+.note-list > li > a,
+.home-figure figcaption {
+    font-family: var(--serif);
+    font-optical-sizing: auto;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+}
+
+.page-intro h1 {
+    font-size: clamp(28px, 3vw, 36px);
+}
+
+.home-kicker {
+    font-size: clamp(32px, 3.4vw, 42px);
+}
+
+@media (min-width: 861px) {
+    body[data-page="home"] .home-kicker {
+        font-size: clamp(30px, 4.8vh, 42px);
+    }
+}
+
+.blog-post-header h1 {
+    font-size: clamp(28px, 3.3vw, 38px);
+}
+
+.learning-blog-section h4 {
+    font-size: clamp(21px, 2.2vw, 24px);
+}
+
+.blog-preview-grid .learning-blog-link span {
+    font-size: clamp(20px, 1.9vw, 22px);
+}
+
+.learning-blog-link span,
+.note-list > li > a {
+    font-size: 17.5px;
+}
+
+.project-title {
+    font-size: 19px;
+}
+
+.home-figure figcaption {
+    font-size: 17px;
+}
+
+/* Large headings use the display optical size (finer, tighter); small titles
+   keep the text optical size at medium weight for sturdiness. */
+.page-intro h1,
+.home-kicker,
+.foot-title,
+.blog-post-header h1,
+.learning-blog-section h4 {
+    font-weight: 400;
+    font-variation-settings: "opsz" 60;
+    letter-spacing: -0.018em;
+}
+
+.blog-preview-grid .learning-blog-link span,
+.learning-blog-link span,
+.project-title,
+.note-list > li > a,
+.home-figure figcaption {
+    font-weight: 500;
+    font-variation-settings: "opsz" 24;
+    letter-spacing: -0.008em;
+}
