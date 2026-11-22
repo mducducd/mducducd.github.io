@@ -8,7 +8,7 @@
     --line-soft: #ececea;
     --script: "La Belle Aurore", "Brush Script MT", cursive;
     --serif: "Cormorant Garamond", "Times New Roman", serif;
-    --sans: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --max: 1180px;
     --max-prose: 720px;
     --section-gap: clamp(44px, 6vw, 78px);
@@ -2470,4 +2470,522 @@ body[data-theme="dark"] .prose a {
 html[data-theme="dark"] body.essay-page .citation,
 body[data-theme="dark"] .citation {
     color: #f2ead9;
+}
+
+/* ==========================================================================
+   Refinement layer
+   Calmer type, softer cards and a comfortable reading width. Everything here
+   overrides rules above; colours come from the theme tokens, so dark mode
+   keeps working unchanged.
+   ========================================================================== */
+
+:root {
+    --radius: 14px;
+    --shadow-soft: 0 1px 2px rgba(26, 26, 26, 0.03), 0 10px 30px rgba(26, 26, 26, 0.05);
+    --ease-calm: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.7;
+    text-rendering: optimizeLegibility;
+}
+
+::selection {
+    background: rgba(194, 164, 107, 0.26);
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ---------- Header ---------- */
+.nav {
+    gap: 30px;
+}
+
+.nav a {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--soft-ink);
+}
+
+.nav a:hover,
+.nav a[aria-current="page"] {
+    color: var(--ink);
+    opacity: 1;
+}
+
+.nav a::after {
+    right: 0;
+    bottom: -6px;
+}
+
+.nav a:hover::after,
+.nav a[aria-current="page"]::after {
+    opacity: 0.35;
+}
+
+.theme-toggle,
+.topbar.scrolled .theme-toggle {
+    margin-left: 28px;
+    padding: 7px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+    transition: border-color var(--duration-base) var(--ease-calm), color var(--duration-fast) var(--ease-calm);
+}
+
+.theme-toggle:hover {
+    opacity: 1;
+    border-color: var(--muted);
+}
+
+/* ---------- Shared type ---------- */
+.section-label,
+.card-label,
+.mini-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.page-intro {
+    padding: 56px 0 40px;
+}
+
+.page-intro h1 {
+    max-width: 720px;
+    font-size: clamp(30px, 4.2vw, 42px);
+    line-height: 1.12;
+}
+
+.page-intro p:last-child {
+    margin-top: 16px;
+    font-size: 16.5px;
+    line-height: 1.7;
+}
+
+/* ---------- Home ---------- */
+.home-index {
+    padding: 24px 0 48px;
+}
+
+.dresden-frame {
+    border-radius: var(--radius);
+}
+
+.dresden-figure figcaption {
+    margin-top: 12px;
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+    text-transform: none;
+}
+
+.home-kicker {
+    margin: 6px 0 0;
+    font-family: var(--serif);
+    font-size: clamp(30px, 4vw, 38px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
+}
+
+.home-copy {
+    margin-top: 18px;
+}
+
+.home-copy p {
+    font-size: 16.5px;
+    line-height: 1.8;
+}
+
+.home-get-in-touch {
+    margin-top: 34px;
+    padding-top: 28px;
+}
+
+.home-get-in-touch h2 {
+    margin-bottom: 4px;
+    font-size: 24px;
+}
+
+.home-contact.contact-icons {
+    gap: 10px;
+}
+
+.contact-icon {
+    padding: 8px 15px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    font-size: 13.5px;
+    letter-spacing: 0;
+    text-transform: none;
+    transition: border-color var(--duration-base) var(--ease-calm), box-shadow var(--duration-base) var(--ease-calm);
+}
+
+.contact-icon:hover {
+    opacity: 1;
+    border-color: var(--muted);
+    box-shadow: var(--shadow-soft);
+}
+
+/* ---------- Cards ---------- */
+.quiet-card,
+.project-row {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+    transition:
+        border-color var(--duration-base) var(--ease-calm),
+        box-shadow 360ms var(--ease-calm);
+}
+
+.quiet-card {
+    padding: 24px 26px 26px;
+}
+
+.quiet-card:hover,
+.project-row:hover {
+    border-color: var(--line);
+    box-shadow: var(--shadow-soft);
+    transform: none;
+}
+
+.card-label {
+    margin-bottom: 14px;
+}
+
+.card-cta {
+    margin-top: 20px;
+}
+
+.card-cta a {
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    border-bottom: 0;
+}
+
+.preview-copy {
+    margin: 10px 0 0;
+    color: var(--soft-ink);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.learning-blog-link time,
+.blog-post-header time {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    font-variant-numeric: tabular-nums;
+}
+
+.learning-blog-link span {
+    transition: opacity var(--duration-fast) var(--ease-calm);
+}
+
+.learning-blog-link:hover span {
+    opacity: 0.7;
+}
+
+/* Blog list */
+.blog-preview-grid {
+    gap: 16px;
+}
+
+.blog-preview-grid .learning-blog-link span {
+    font-size: 23px;
+    line-height: 1.25;
+}
+
+/* Essay list inside the Study card */
+.learning-blog-card .learning-blog-link {
+    padding: 12px 0;
+    border-top: 1px solid var(--line-soft);
+}
+
+.learning-blog-card .card-label + .learning-blog-link {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.learning-blog-card .preview-copy {
+    margin-top: 14px;
+}
+
+/* ---------- Work ---------- */
+.work-section {
+    width: min(100% - 48px, 1080px);
+    padding-top: 8px;
+}
+
+.project-list {
+    gap: 20px;
+}
+
+.project-grid-sizer,
+.project-row {
+    width: calc((100% - 40px) / 3);
+}
+
+.project-gutter-sizer {
+    width: 20px;
+}
+
+.project-list.is-masonry-ready .project-row {
+    margin-bottom: 20px;
+}
+
+.project-body {
+    padding: 16px 18px 18px;
+}
+
+.project-meta {
+    margin-bottom: 8px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0;
+}
+
+.project-title {
+    margin-bottom: 8px;
+    font-size: 22px;
+    line-height: 1.15;
+}
+
+.project-desc {
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.project-links {
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.project-links a,
+.project-links .demo-trigger {
+    padding: 5px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.project-links a:hover,
+.project-links .demo-trigger:hover,
+.project-links .demo-trigger.is-active {
+    opacity: 1;
+    border-color: var(--ink);
+}
+
+/* ---------- Offline ---------- */
+.playlist-open .track-meta {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    text-transform: none;
+}
+
+/* ---------- Essays ---------- */
+.blog-post-page {
+    width: min(100% - 48px, 820px);
+    padding: 32px 0 72px;
+}
+
+.blog-post,
+.blog-post--wide {
+    border-radius: 18px;
+    padding: clamp(24px, 7vw, 64px);
+}
+
+.blog-back {
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.blog-back::before {
+    content: "\2190";
+    margin-right: 8px;
+}
+
+.blog-post-header {
+    margin-bottom: 40px;
+    padding-bottom: 28px;
+}
+
+.blog-post-header h1 {
+    font-size: clamp(34px, 5.4vw, 52px);
+    line-height: 1.08;
+}
+
+.blog-post-header time {
+    margin-top: 14px;
+}
+
+.learning-blog-section {
+    padding-top: 32px;
+}
+
+.learning-blog-section + .learning-blog-section {
+    margin-top: 36px;
+}
+
+.learning-blog-section h4 {
+    margin-bottom: 14px;
+    font-size: clamp(24px, 3vw, 30px);
+    line-height: 1.15;
+}
+
+.learning-blog-section p,
+.learning-blog-section li {
+    font-size: 17px;
+    line-height: 1.78;
+}
+
+.learning-blog-section p {
+    margin-bottom: 18px;
+}
+
+.learning-blog-table {
+    margin: 28px 0;
+    border-radius: 12px;
+}
+
+.learning-blog-table table {
+    min-width: 600px;
+    background: var(--surface);
+}
+
+.learning-blog-table caption {
+    padding: 14px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.learning-blog-table th,
+.learning-blog-table td {
+    padding: 12px 16px;
+    font-size: 14px;
+}
+
+.learning-blog-table thead th,
+.learning-blog-table tbody th {
+    font-weight: 600;
+}
+
+.learning-blog-references li {
+    font-size: 14px;
+}
+
+/* ---------- Footer ---------- */
+.foot {
+    margin-top: 24px;
+    padding: 40px 24px 44px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+/* ---------- Spacing and alignment ---------- */
+.page-intro + .learning-section,
+.page-intro + .music-section {
+    padding-top: 40px;
+}
+
+body[data-page="work"] .page-intro {
+    width: min(100% - 48px, 1080px);
+}
+
+.project-row .project-thumb img {
+    max-height: 260px;
+}
+
+.quiet-card p:not([class]) {
+    font-size: 15.5px;
+    line-height: 1.75;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+    .project-grid-sizer,
+    .project-row {
+        width: calc((100% - 16px) / 2);
+    }
+
+    .project-gutter-sizer {
+        width: 16px;
+    }
+
+    .project-list.is-masonry-ready .project-row {
+        margin-bottom: 16px;
+    }
+
+    .nav a {
+        font-size: 15px;
+    }
+
+    .theme-toggle {
+        margin-left: 12px;
+        padding: 6px 12px;
+    }
+
+    .page-intro {
+        padding: 36px 0 28px;
+    }
+}
+
+@media (max-width: 520px) {
+    .project-grid-sizer,
+    .project-row {
+        width: 100%;
+    }
+
+    .project-gutter-sizer {
+        width: 0;
+    }
+
+    .learning-blog-section p,
+    .learning-blog-section li {
+        font-size: 16px;
+    }
+
+    .contact-icon {
+        padding: 7px 12px;
+    }
 }
