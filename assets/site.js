@@ -489,6 +489,84 @@
             return shortenCaption(objectName) || shortenCaption(imageDescription) || shortenCaption(pageTitle) || "Daily view from Germany";
         }
 
+        // Tint the caption plate from the photo: sample its average colour and
+        // pass hue and saturation to CSS, which picks a pale (light theme) or
+        // deep (dark theme) tone. If the pixels cannot be read, the plate keeps
+        // its neutral default.
+        function tintCaptionFromPhoto(src) {
+            if (!dresdenFigure || !src) {
+                return;
+            }
+
+            const sample = new Image();
+            sample.crossOrigin = "anonymous";
+            sample.onload = () => {
+                try {
+                    const size = 24;
+                    const canvas = document.createElement("canvas");
+                    canvas.width = size;
+                    canvas.height = size;
+                    const context = canvas.getContext("2d");
+                    context.drawImage(sample, 0, 0, size, size);
+                    const data = context.getImageData(0, 0, size, size).data;
+                    let r = 0;
+                    let g = 0;
+                    let b = 0;
+                    let count = 0;
+
+                    for (let i = 0; i < data.length; i += 4) {
+                        const max = Math.max(data[i], data[i + 1], data[i + 2]);
+                        const min = Math.min(data[i], data[i + 1], data[i + 2]);
+
+                        // Skip near-white sky and near-black shadow so the tint
+                        // follows the photo's real colours.
+                        if (max > 245 || max < 18 || max - min < 6) {
+                            continue;
+                        }
+                        r += data[i];
+                        g += data[i + 1];
+                        b += data[i + 2];
+                        count += 1;
+                    }
+
+                    if (!count) {
+                        return;
+                    }
+
+                    r /= count * 255;
+                    g /= count * 255;
+                    b /= count * 255;
+
+                    const max = Math.max(r, g, b);
+                    const min = Math.min(r, g, b);
+                    const lightness = (max + min) / 2;
+                    const delta = max - min;
+                    let hue = 0;
+                    let saturation = 0;
+
+                    if (delta > 0) {
+                        saturation = delta / (1 - Math.abs(2 * lightness - 1));
+                        if (max === r) {
+                            hue = 60 * (((g - b) / delta) % 6);
+                        } else if (max === g) {
+                            hue = 60 * ((b - r) / delta + 2);
+                        } else {
+                            hue = 60 * ((r - g) / delta + 4);
+                        }
+                    }
+
+                    hue = Math.round((hue + 360) % 360);
+                    // Grey photos stay near-neutral; colourful ones get a gentle tint.
+                    saturation = Math.round(Math.min(saturation * 100 * 0.8, 32));
+                    dresdenFigure.style.setProperty("--plate-h", String(hue));
+                    dresdenFigure.style.setProperty("--plate-s", saturation + "%");
+                } catch (error) {
+                    // Cross-origin pixels unavailable: keep the neutral plate.
+                }
+            };
+            sample.src = src;
+        }
+
         function markFigureLoaded() {
             if (dresdenFigure) {
                 dresdenFigure.classList.add("is-loaded");
@@ -527,6 +605,7 @@
 
                 dresdenPhoto.src = photo.image;
                 dresdenPhoto.alt = photo.alt || "Daily landscape view from Germany";
+                tintCaptionFromPhoto(photo.image);
                 if (dresdenCaption) {
                     dresdenCaption.textContent = captionText;
                 }

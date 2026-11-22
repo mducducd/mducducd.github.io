@@ -3793,3 +3793,57 @@ body[data-theme="dark"] .card-cta a {
         padding: 52px 0 32px;
     }
 }
+
+/* ---------- Footer in balance: a light tone, black only in small accents ----------
+   Inner pages run white intro -> grey band -> white footer; the home page runs
+   white hero -> grey footer. The footer re-scopes the block tokens so its type
+   is dark and its buttons are outlined in black, filling black on hover. */
+.foot {
+    --block: var(--bg);
+    --on-block: var(--ink);
+    --on-block-muted: var(--muted);
+}
+
+body[data-page="home"] .foot {
+    --block: var(--band);
+}
+
+.foot-btn {
+    border-color: var(--ink);
+}
+
+.foot-btn:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+}
+
+body[data-page="home"] .foot-btn:hover {
+    color: var(--band);
+}
+
+/* ---------- Caption plate tinted from the daily photo ----------
+   site.js sets --plate-h and --plate-s from the photo's average colour.
+   Light theme: a pale tint with dark text. Dark theme: a deep tone. */
+.home-figure figcaption {
+    background: hsl(var(--plate-h, 0) var(--plate-s, 0%) 94%);
+    color: var(--ink);
+    box-shadow: 0 14px 36px rgba(11, 11, 11, 0.08);
+    transition: background-color 600ms var(--ease-calm);
+}
+
+.home-figure figcaption::before {
+    color: hsl(var(--plate-h, 0) calc(var(--plate-s, 0%) + 8%) 32%);
+}
+
+html[data-theme="dark"] .home-figure figcaption,
+body[data-theme="dark"] .home-figure figcaption {
+    background: hsl(var(--plate-h, 30) var(--plate-s, 12%) 17%);
+    color: var(--ink);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] .home-figure figcaption::before,
+body[data-theme="dark"] .home-figure figcaption::before {
+    color: hsl(var(--plate-h, 30) calc(var(--plate-s, 12%) + 8%) 72%);
+}
