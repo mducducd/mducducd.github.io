@@ -2791,7 +2791,7 @@ a:hover {
 
 .project-title {
     margin-bottom: 8px;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.15;
 }
 
@@ -2891,7 +2891,7 @@ a:hover {
 
 .learning-blog-section p,
 .learning-blog-section li {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.78;
 }
 
@@ -3076,21 +3076,21 @@ body[data-theme="dark"] {
 
 /* ---------- Display titles ---------- */
 .page-intro {
-    padding: 60px 0 48px;
+    padding: 52px 0 40px;
 }
 
 .page-intro h1 {
     max-width: 760px;
-    font-size: clamp(32px, 4vw, 48px);
+    font-size: clamp(28px, 3.2vw, 38px);
     font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
+    line-height: 1.12;
+    letter-spacing: -0.005em;
 }
 
 .page-intro p:last-child {
     max-width: 600px;
-    margin-top: 22px;
-    font-size: 17px;
+    margin-top: 16px;
+    font-size: 16px;
 }
 
 /* ---------- Cream band behind content ---------- */
@@ -3124,10 +3124,6 @@ body[data-theme="dark"] {
 .foot {
     margin-top: 0;
     border-top: 0;
-}
-
-body[data-page="home"] .foot {
-    background: var(--band);
 }
 
 /* ---------- Square, quiet surfaces ---------- */
@@ -3211,7 +3207,7 @@ body[data-page="home"] .foot {
 }
 
 .blog-preview-grid .learning-blog-link span {
-    font-size: clamp(23px, 2.4vw, 27px);
+    font-size: clamp(21px, 2vw, 24px);
     font-weight: 500;
     line-height: 1.15;
 }
@@ -3232,9 +3228,8 @@ body[data-page="home"] .foot {
     grid-template-areas:
         "eyebrow figure"
         "kicker  figure"
-        "copy    figure"
-        "touch   figure";
-    grid-template-rows: auto auto auto 1fr;
+        "copy    figure";
+    grid-template-rows: auto auto 1fr;
     column-gap: clamp(32px, 5vw, 72px);
     align-items: start;
     text-align: left;
@@ -3248,10 +3243,10 @@ body[data-page="home"] .foot {
 .home-kicker {
     grid-area: kicker;
     margin: 20px 0 0;
-    font-size: clamp(42px, 5vw, 64px);
+    font-size: clamp(34px, 3.6vw, 46px);
     font-weight: 500;
-    line-height: 1.04;
-    letter-spacing: -0.015em;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
     text-align: left;
 }
 
@@ -3263,7 +3258,7 @@ body[data-page="home"] .foot {
 }
 
 .home-copy p {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.75;
 }
 
@@ -3344,7 +3339,7 @@ body.essay-page {
 }
 
 .blog-post-header h1 {
-    font-size: clamp(34px, 4.6vw, 50px);
+    font-size: clamp(30px, 3.6vw, 42px);
     font-weight: 500;
     line-height: 1.08;
     letter-spacing: -0.015em;
@@ -3359,7 +3354,7 @@ body.essay-page {
 }
 
 .learning-blog-section h4 {
-    font-size: clamp(24px, 2.8vw, 30px);
+    font-size: clamp(22px, 2.4vw, 26px);
     font-weight: 500;
 }
 
@@ -3379,8 +3374,7 @@ body.essay-page {
             "figure"
             "eyebrow"
             "kicker"
-            "copy"
-            "touch";
+            "copy";
         grid-template-rows: auto;
     }
 
@@ -3418,5 +3412,158 @@ body.essay-page {
     .quiet-card,
     .blog-preview-grid .quiet-card {
         padding: 24px 22px 26px;
+    }
+}
+
+/* ---------- Footer: a calm closing section with contact ---------- */
+.foot {
+    padding: 0;
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--soft-ink);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-align: left;
+    text-transform: none;
+}
+
+.foot-inner,
+.foot-base {
+    width: min(100% - 48px, 1120px);
+    margin: 0 auto;
+}
+
+.foot-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px;
+    padding: 72px 0 60px;
+}
+
+.foot .section-label {
+    margin-bottom: 18px;
+}
+
+.foot-title {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(28px, 2.8vw, 34px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+}
+
+.foot-email {
+    display: inline-block;
+    margin-top: 18px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+    transition: border-color var(--duration-base) var(--ease-calm);
+}
+
+.foot-email:hover {
+    opacity: 1;
+    border-color: var(--ink);
+}
+
+.foot-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding-top: 4px;
+}
+
+.foot-label,
+.foot-col .foot-label {
+    margin: 0 0 8px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.foot-col a,
+.foot-col p {
+    margin: 0;
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.foot-col a span,
+.foot-top span {
+    display: inline-block;
+    margin-left: 4px;
+    color: var(--muted);
+    transition: transform var(--duration-base) var(--ease-out), color var(--duration-fast) var(--ease-calm);
+}
+
+.foot-col a:hover,
+.foot-top:hover {
+    opacity: 1;
+}
+
+.foot-col a:hover span {
+    color: var(--ink);
+    transform: translate(2px, -2px);
+}
+
+.foot-col .foot-muted {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.foot-base {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 0 28px;
+    border-top: 1px solid var(--line-soft);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.foot-base p {
+    margin: 0;
+}
+
+.foot-top {
+    color: var(--muted);
+}
+
+.foot-top:hover {
+    color: var(--ink);
+}
+
+.foot-top:hover span {
+    color: var(--ink);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 860px) {
+    .foot-inner {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 40px 24px;
+        padding: 56px 0 48px;
+    }
+
+    .foot-lead {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 520px) {
+    .foot-inner,
+    .foot-base {
+        width: min(100% - 32px, 1120px);
     }
 }
