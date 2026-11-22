@@ -6,14 +6,14 @@ summary: "On how a clinical AI agent can learn from clinician feedback over time
 ---
     <section class="learning-blog-section" id="introduction">
         <h4>Introduction</h4>
-        <p>I built an agent that selects regions of interest (ROIs) from whole-slide images. It works. But every slide starts from zero. When a clinician corrects a mistake, the agent does not keep that lesson. So I want to discuss one question: how can a clinical AI agent get better over time?</p>
+        <p>Consider an agent that selects regions of interest (ROIs) from whole-slide images. It works. But every slide starts from zero. When a clinician corrects a mistake, the agent does not keep that lesson. So this essay asks one question: how can a clinical AI agent get better over time?</p>
     </section>
 
     <section class="learning-blog-section" id="what-is-rsi">
         <h4>What is RSI?</h4>
         <p>Duan and colleagues describe recursive self-improvement (RSI) as AI systems that &ldquo;turn experience and feedback into persistent changes that improve both their capabilities and the process of future improvement&rdquo; <a class="citation" href="#ref-duan2026">[1]</a>.</p>
         <p>The paper defines it through one loop. Experience feeds an <strong>improver</strong>, which proposes a change to a <strong>target</strong>. A <strong>verifier</strong> accepts or rejects it. The accepted change is kept in the <strong>state</strong>, and the next round starts from there <a class="citation" href="#ref-duan2026">[1]</a>. So an improvement counts only if it is accepted, kept, and reused. It becomes recursive when the change also improves the improver or the verifier.</p>
-        <p>For every system, I ask three questions. Where does the loop close? What is kept? What stays with humans?</p>
+        <p>For every system, it helps to ask three questions. Where does the loop close? What is kept? What stays with humans?</p>
     </section>
 
     <section class="learning-blog-section" id="the-levels">
@@ -146,7 +146,7 @@ summary: "On how a clinical AI agent can learn from clinician feedback over time
 
     <section class="learning-blog-section" id="a-realistic-next-step">
         <h4>A realistic next step: what to update</h4>
-        <p>We do not need full autonomy. The next step is to move my agent from B0 to L1, and then toward L2, while keeping clinicians in control. The VLM stays frozen. What changes is everything around it.</p>
+        <p>We do not need full autonomy. The next step is to move such an agent from B0 to L1, and then toward L2, while keeping clinicians in control. The VLM stays frozen. What changes is everything around it.</p>
 
         <div class="learning-blog-table" role="region" aria-label="What to update in the ROI agent at B0, L1 and L2">
             <table>

@@ -6,7 +6,7 @@ summary: "On why so many molecule and omics models pair a graph, a GNN and flow 
 ---
     <section class="learning-blog-section" id="introduction">
         <h4>Introduction</h4>
-        <p>I want to discuss one question: why do so many models for molecules and omics look the same? They build a graph, run a GNN on it, and use flow matching to move between distributions. MintFlow <a class="citation" href="#ref-akbarnejad2025">[10]</a>, a model for spatial transcriptomics, has all three. So, why do these choices fit the data? And where do VAE and latent diffusion stand?</p>
+        <p>This essay asks one question: why do so many models for molecules and omics look the same? They build a graph, run a GNN on it, and use flow matching to move between distributions. MintFlow <a class="citation" href="#ref-akbarnejad2025">[10]</a>, a model for spatial transcriptomics, has all three. So, why do these choices fit the data? And where do VAE and latent diffusion stand?</p>
     </section>
 
     <section class="learning-blog-section" id="why-a-graph">
@@ -142,13 +142,13 @@ summary: "On why so many molecule and omics models pair a graph, a GNN and flow 
             </table>
         </div>
 
-        <p>The table is my own summary of the sources above, not a benchmark.</p>
+        <p>The table is a summary of the sources above, not a benchmark.</p>
         <p>So, why flow matching for perturbation? A perturbation has two real distributions, before and after. Diffusion starts from Gaussian noise. Flow matching does not have to <a class="citation" href="#ref-tong2024">[4]</a>, so it can connect the two directly.</p>
         <p>In short, the VAE gives the latent space, and flow matching or diffusion moves things inside it.</p>
     </section>
 
-    <section class="learning-blog-section" id="what-i-take-away">
-        <h4>What I take away</h4>
+    <section class="learning-blog-section" id="takeaways">
+        <h4>Takeaways</h4>
         <p>Graphs fit because molecules and tissues are parts and relations. GNNs compute on those relations. Flow matching fits because many questions ask how one population becomes another. VAE and latent diffusion are not replaced. They often give the latent space where the flow runs.</p>
         <p>Two limits stay open. A kNN graph with a fixed k is a modeling choice. And a map from control to perturbed cells is a prediction. Without interventional data, it is a hypothesis, not a causal result.</p>
     </section>
