@@ -3863,3 +3863,68 @@ html[data-theme="dark"] .home-figure figcaption,
 body[data-theme="dark"] .home-figure figcaption {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 0 22px 48px rgba(0, 0, 0, 0.45);
 }
+
+/* ---------- Header: a full-width hairline separates it from the page ---------- */
+.topbar {
+    border-bottom: 0;
+}
+
+.topbar::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100vw;
+    height: 1px;
+    background: var(--line);
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.topbar,
+.topbar.scrolled {
+    padding-bottom: 16px;
+}
+
+.home-index {
+    padding-top: 64px;
+}
+
+@media (max-width: 860px) {
+    .topbar,
+    .topbar.scrolled {
+        border-bottom: 0;
+        padding-bottom: 10px;
+    }
+
+    .home-index {
+        padding-top: 28px;
+    }
+}
+
+@media (max-width: 860px) {
+    .nav {
+        border-bottom: 0;
+    }
+
+    .topbar.nav-open .nav {
+        border-bottom: 1px solid var(--line);
+    }
+}
+
+@media (max-width: 860px) {
+    /* The desktop nav gap must not apply to the stacked mobile menu. */
+    .nav {
+        gap: 0;
+    }
+
+    .nav a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 52px;
+        min-height: 0;
+        padding: 0 24px;
+        line-height: 1.2;
+    }
+}
