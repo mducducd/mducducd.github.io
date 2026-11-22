@@ -4184,3 +4184,10 @@ body[data-page="home"] .foot-btn:hover {
         grid-template-rows: 1fr auto auto auto 1fr;
     }
 }
+
+/* Keep the tone block inside the page margin on narrower desktops/tablets. */
+@media (max-width: 1180px) {
+    .home-figure::after {
+        right: -16px;
+    }
+}
