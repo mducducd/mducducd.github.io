@@ -3567,3 +3567,162 @@ body.essay-page {
         width: min(100% - 32px, 1120px);
     }
 }
+
+/* ==========================================================================
+   Monochrome contrast layer
+   Pure white page, near-black type, cool grey bands, and solid black blocks
+   (footer, caption plate, primary buttons). Light theme only for colours;
+   dark theme tokens on html[data-theme="dark"] still take precedence.
+   ========================================================================== */
+
+:root {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --ink: #0b0b0b;
+    --soft-ink: #262626;
+    --muted: #6b6b6b;
+    --line: #d6d6d6;
+    --line-soft: #e8e8e8;
+    --band: #f2f2f2;
+    --bronze: #0b0b0b;
+    --block: #0b0b0b;
+    --on-block: #ffffff;
+    --on-block-muted: #9e9e9e;
+}
+
+html[data-theme="dark"],
+body[data-theme="dark"] {
+    --bronze: #d9cdb6;
+    --block: #0c0a08;
+    --on-block: #f2ead9;
+    --on-block-muted: #9a8d78;
+}
+
+::selection {
+    background: rgba(11, 11, 11, 0.14);
+}
+
+/* Crisper serif headings */
+.page-intro h1,
+.home-kicker,
+.foot-title,
+.blog-post-header h1,
+.learning-blog-section h4,
+.blog-preview-grid .learning-blog-link span,
+.learning-blog-link span,
+.project-title,
+.note-list > li > a {
+    font-weight: 600;
+}
+
+/* Cards: white on the grey band, defined by tone not borders */
+.quiet-card,
+.project-row {
+    border-color: transparent;
+}
+
+.quiet-card:hover,
+.project-row:hover {
+    border-color: transparent;
+    box-shadow: 0 16px 40px rgba(11, 11, 11, 0.08);
+}
+
+/* Outlined buttons in black; filled on hover */
+.project-links a,
+.project-links .demo-trigger,
+.theme-toggle,
+.topbar.scrolled .theme-toggle {
+    border-color: var(--ink);
+    color: var(--ink);
+    transition: background-color var(--duration-base) var(--ease-calm), color var(--duration-base) var(--ease-calm);
+}
+
+.project-links a:hover,
+.project-links .demo-trigger:hover,
+.project-links .demo-trigger.is-active,
+.theme-toggle:hover {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+}
+
+/* Primary call to action as a solid block */
+.card-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 18px;
+    border: 0;
+    background: var(--block);
+    color: var(--on-block);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    transition: opacity var(--duration-base) var(--ease-calm);
+}
+
+.card-cta a:hover {
+    opacity: 0.82;
+}
+
+/* Caption plate on the daily photo as a solid black block */
+.home-figure figcaption {
+    background: var(--block);
+    color: var(--on-block);
+    box-shadow: none;
+}
+
+.home-figure figcaption::before {
+    color: var(--on-block-muted);
+}
+
+/* Footer as a solid black block */
+.foot {
+    border-top: 0;
+    background: var(--block);
+    color: var(--on-block);
+}
+
+.foot .section-label {
+    color: var(--on-block-muted);
+}
+
+.foot-title,
+.foot-email,
+.foot-col a,
+.foot-col p {
+    color: var(--on-block);
+}
+
+.foot-email {
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+.foot-email:hover {
+    border-color: var(--on-block);
+}
+
+.foot-label,
+.foot-col .foot-label,
+.foot-col .foot-muted,
+.foot-base,
+.foot-top,
+.foot-col a span,
+.foot-top span {
+    color: var(--on-block-muted);
+}
+
+.foot-col a:hover span,
+.foot-top:hover,
+.foot-top:hover span {
+    color: var(--on-block);
+}
+
+.foot-base {
+    border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+html[data-theme="dark"] .card-cta a,
+body[data-theme="dark"] .card-cta a {
+    background: var(--ink);
+    color: var(--bg);
+}
