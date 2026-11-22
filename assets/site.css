@@ -3928,3 +3928,145 @@ body[data-theme="dark"] .home-figure figcaption {
         line-height: 1.2;
     }
 }
+
+/* ==========================================================================
+   Layered, low-contrast composition
+   Depth comes from offset hairline frames, a soft tone block and overlaps;
+   sections are split by hairlines and whitespace instead of tone bands or
+   solid black blocks.
+   ========================================================================== */
+
+/* ---------- Home hero: frame + tone block behind the photo ---------- */
+.home-intro {
+    isolation: isolate;
+}
+
+.dresden-figure.home-figure {
+    width: auto;
+    margin: 40px 0 48px 40px;
+}
+
+/* Outlined "virtual square", offset up and to the left of the photo. */
+.home-figure::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    right: 72px;
+    bottom: 96px;
+    border: 1px solid var(--ink);
+    opacity: 0.85;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Soft tone block peeking out from the top-right corner. */
+.home-figure::after {
+    content: "";
+    position: absolute;
+    top: -28px;
+    right: -28px;
+    width: 46%;
+    height: 52%;
+    background: var(--band);
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* ---------- Inner pages: white throughout, split by a hairline ---------- */
+.page-main > .learning-section,
+.page-main > .music-section,
+.page-main > .work-section {
+    background: transparent;
+    box-shadow: none;
+    clip-path: none;
+    position: relative;
+}
+
+.page-main > .learning-section::before,
+.page-main > .music-section::before,
+.page-main > .work-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 1px;
+    background: var(--line-soft);
+    transform: translateX(-50%);
+}
+
+body.essay-page {
+    background: var(--bg);
+}
+
+/* Cards defined by a fine border, lifting gently on hover */
+.quiet-card,
+.project-row,
+.blog-post,
+.blog-post--wide {
+    border: 1px solid var(--line-soft);
+}
+
+.quiet-card:hover,
+.project-row:hover {
+    border-color: var(--line);
+    box-shadow: 0 14px 36px rgba(11, 11, 11, 0.06);
+}
+
+/* ---------- Outlined buttons, like "See more" ---------- */
+.card-cta a {
+    padding: 10px 18px;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    transition: background-color var(--duration-base) var(--ease-calm), color var(--duration-base) var(--ease-calm);
+}
+
+.card-cta a:hover {
+    opacity: 1;
+    background: var(--ink);
+    color: var(--bg);
+}
+
+html[data-theme="dark"] .card-cta a,
+body[data-theme="dark"] .card-cta a {
+    background: transparent;
+    color: var(--ink);
+}
+
+html[data-theme="dark"] .card-cta a:hover,
+body[data-theme="dark"] .card-cta a:hover {
+    background: var(--ink);
+    color: var(--bg);
+}
+
+/* ---------- Footer: white, split by a hairline ---------- */
+.foot,
+body[data-page="home"] .foot {
+    --block: var(--bg);
+    border-top: 1px solid var(--line-soft);
+}
+
+body[data-page="home"] .foot-btn:hover {
+    color: var(--bg);
+}
+
+/* ---------- Small screens: lighter offsets ---------- */
+@media (max-width: 860px) {
+    .dresden-figure.home-figure {
+        margin: 20px 0 56px 20px;
+    }
+
+    .home-figure::before {
+        top: -20px;
+        left: -20px;
+        right: 36px;
+        bottom: 60px;
+    }
+
+    .home-figure::after {
+        top: -14px;
+        right: -14px;
+    }
+}
