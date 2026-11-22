@@ -2480,16 +2480,18 @@ body[data-theme="dark"] .citation {
    ========================================================================== */
 
 :root {
-    /* Light theme with more contrast: warm paper page, white cards, darker
-       text and greys (muted ~5.7:1, passes WCAG AA). Dark theme tokens are
-       set on html[data-theme="dark"] and still take precedence. */
-    --bg: #f4f3ef;
+    /* Light theme with more contrast: neutral off-white page, white cards
+       with hairline borders, darker text and greys (muted ~6:1, passes WCAG
+       AA). Dark theme tokens are set on html[data-theme="dark"] and still
+       take precedence. */
+    --bg: #fafaf9;
     --surface: #ffffff;
-    --ink: #121211;
-    --soft-ink: #2b2a27;
-    --muted: #62605a;
-    --line: #d9d6ce;
-    --line-soft: #e4e1da;
+    --ink: #111111;
+    --soft-ink: #2a2a29;
+    --muted: #5f5f5c;
+    --line: #dcdcd9;
+    --line-soft: #e6e6e4;
+    --shadow-rest: 0 1px 2px rgba(17, 17, 17, 0.04);
     --radius: 14px;
     --shadow-soft: 0 1px 2px rgba(26, 26, 26, 0.03), 0 10px 30px rgba(26, 26, 26, 0.05);
     --ease-calm: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -2670,6 +2672,7 @@ a:hover {
     background: var(--surface);
     border: 1px solid var(--line-soft);
     border-radius: var(--radius);
+    box-shadow: var(--shadow-rest);
     transition:
         border-color var(--duration-base) var(--ease-calm),
         box-shadow 360ms var(--ease-calm);
