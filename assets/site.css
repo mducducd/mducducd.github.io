@@ -4191,3 +4191,18 @@ body[data-page="home"] .foot-btn:hover {
         right: -16px;
     }
 }
+
+/* ---------- Get in touch: icon links without borders ---------- */
+.foot-btn,
+body[data-page="home"] .foot-btn {
+    border-color: transparent;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.foot-btn:hover,
+body[data-page="home"] .foot-btn:hover {
+    border-color: transparent;
+    background: var(--band);
+    color: var(--ink);
+}
