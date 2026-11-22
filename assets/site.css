@@ -3009,3 +3009,397 @@ body[data-page="work"] .page-intro {
         padding: 7px 12px;
     }
 }
+
+/* ==========================================================================
+   Editorial layer
+   Display-size serif titles, small tracked capitals for navigation, labels
+   and buttons, a soft cream band behind content, square corners, hairline
+   buttons and one quiet bronze accent. Overrides the layers above.
+   ========================================================================== */
+
+:root {
+    --band: #f3efe9;
+    --bronze: #7d5f4b;
+    --radius: 3px;
+}
+
+html[data-theme="dark"],
+body[data-theme="dark"] {
+    --band: #1e1914;
+    --bronze: #c9a982;
+}
+
+/* ---------- Navigation and small capitals ---------- */
+.nav a {
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+.nav a::after {
+    right: 0.16em;
+}
+
+.theme-toggle,
+.topbar.scrolled .theme-toggle {
+    padding: 8px 14px;
+    border-radius: 2px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.section-label,
+.mini-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 11.5px;
+    letter-spacing: 0.18em;
+    color: var(--bronze);
+}
+
+.section-label::before,
+.mini-label::before {
+    content: "";
+    flex: 0 0 32px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.7;
+}
+
+.card-label {
+    letter-spacing: 0.16em;
+}
+
+/* ---------- Display titles ---------- */
+.page-intro {
+    padding: 72px 0 56px;
+}
+
+.page-intro h1 {
+    max-width: 880px;
+    font-size: clamp(42px, 6.2vw, 74px);
+    font-weight: 500;
+    line-height: 1.03;
+    letter-spacing: -0.015em;
+}
+
+.page-intro p:last-child {
+    max-width: 600px;
+    margin-top: 22px;
+    font-size: 17px;
+}
+
+/* ---------- Cream band behind content ---------- */
+.page-main {
+    padding-bottom: 0;
+}
+
+.page-main > .learning-section,
+.page-main > .music-section,
+.page-main > .work-section {
+    background: var(--band);
+    box-shadow: 0 0 0 100vmax var(--band);
+    clip-path: inset(0 -100vmax);
+    padding-top: 64px;
+    padding-bottom: 80px;
+}
+
+.page-intro + .learning-section,
+.page-intro + .music-section {
+    padding-top: 64px;
+}
+
+.page-intro,
+.page-main > .learning-section,
+.page-main > .music-section,
+.page-main > .work-section {
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.foot {
+    margin-top: 0;
+    border-top: 0;
+}
+
+body[data-page="home"] .foot {
+    background: var(--band);
+}
+
+/* ---------- Square, quiet surfaces ---------- */
+.quiet-card,
+.project-row {
+    border-radius: var(--radius);
+    border-color: rgba(17, 17, 17, 0.05);
+    box-shadow: none;
+}
+
+.quiet-card:hover,
+.project-row:hover {
+    border-color: rgba(17, 17, 17, 0.08);
+    box-shadow: 0 14px 36px rgba(17, 17, 17, 0.06);
+}
+
+.quiet-card {
+    padding: 30px 32px 32px;
+}
+
+/* Hairline buttons with small capitals */
+.project-links a,
+.project-links .demo-trigger,
+.contact-icon {
+    border-radius: 2px;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.project-links a,
+.project-links .demo-trigger {
+    padding: 7px 12px;
+}
+
+.contact-icon {
+    padding: 10px 16px;
+    background: transparent;
+}
+
+.contact-icon:hover {
+    border-color: var(--ink);
+    box-shadow: none;
+}
+
+.card-cta a {
+    gap: 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid currentColor;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+/* ---------- Blog list: date as eyebrow, larger titles ---------- */
+.blog-preview-grid {
+    gap: 20px;
+}
+
+.blog-preview-grid .quiet-card {
+    padding: 36px 40px 38px;
+}
+
+.blog-preview-grid .card-label {
+    display: none;
+}
+
+.blog-preview-grid .learning-blog-link {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.blog-preview-grid .learning-blog-link time {
+    color: var(--bronze);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.blog-preview-grid .learning-blog-link span {
+    font-size: clamp(26px, 3vw, 32px);
+    font-weight: 500;
+    line-height: 1.15;
+}
+
+.blog-preview-grid .preview-copy {
+    margin-top: 14px;
+}
+
+/* ---------- Home: split hero with the daily photo blended in ---------- */
+.home-index {
+    width: min(100% - 48px, 1120px);
+    padding: 48px 0 96px;
+}
+
+.home-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-template-areas:
+        "eyebrow figure"
+        "kicker  figure"
+        "copy    figure"
+        "touch   figure";
+    grid-template-rows: auto auto auto 1fr;
+    column-gap: clamp(32px, 5vw, 72px);
+    align-items: start;
+    text-align: left;
+}
+
+.home-eyebrow {
+    grid-area: eyebrow;
+    margin: 24px 0 0;
+}
+
+.home-kicker {
+    grid-area: kicker;
+    margin: 20px 0 0;
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-align: left;
+}
+
+.home-copy {
+    grid-area: copy;
+    max-width: 500px;
+    margin: 30px 0 0;
+    text-align: left;
+}
+
+.home-copy p {
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+.home-get-in-touch {
+    grid-area: touch;
+    max-width: 500px;
+    margin: 34px 0 0;
+    padding-top: 26px;
+    text-align: left;
+}
+
+.home-get-in-touch h2 {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.home-contact.contact-icons {
+    justify-content: flex-start;
+}
+
+.dresden-figure.home-figure {
+    grid-area: figure;
+    margin: 0;
+}
+
+/* The photo runs to the right edge of the screen. */
+.dresden-figure.home-figure {
+    width: auto;
+    margin-right: calc(-1 * max(24px, (100vw - 1120px) / 2));
+}
+
+.home-figure .dresden-frame {
+    aspect-ratio: 1 / 1;
+    border-radius: 0;
+    background: transparent;
+}
+
+/* Fade the photo's left edge gently into the page and soften its colour. */
+.home-figure #dresden-photo {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.18) 10%, rgba(0, 0, 0, 0.55) 22%, rgba(0, 0, 0, 0.88) 34%, #000 44%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.18) 10%, rgba(0, 0, 0, 0.55) 22%, rgba(0, 0, 0, 0.88) 34%, #000 44%);
+    filter: saturate(0.8) contrast(0.96);
+}
+
+.home-figure figcaption {
+    margin-top: 14px;
+    padding: 0 24px 0 44%;
+    text-align: left;
+}
+
+/* ---------- Essays ---------- */
+body.essay-page {
+    background: var(--band);
+}
+
+.blog-post,
+.blog-post--wide {
+    border-color: transparent;
+    border-radius: var(--radius);
+}
+
+.blog-post-header h1 {
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 500;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+}
+
+.blog-post-header time {
+    color: var(--bronze);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.learning-blog-section h4 {
+    font-size: clamp(26px, 3.2vw, 34px);
+    font-weight: 500;
+}
+
+.learning-blog-table {
+    border-radius: var(--radius);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+    .nav a {
+        font-size: 12px;
+    }
+
+    .home-intro {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "figure"
+            "eyebrow"
+            "kicker"
+            "copy"
+            "touch";
+        grid-template-rows: auto;
+    }
+
+    .home-index {
+        padding-top: 16px;
+    }
+
+    .home-figure #dresden-photo {
+        -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+        mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+    }
+
+    .dresden-figure.home-figure {
+        margin-right: 0;
+    }
+
+    .home-figure .dresden-frame {
+        aspect-ratio: 4 / 3;
+    }
+
+    .home-figure figcaption {
+        padding: 0;
+    }
+
+    .page-intro {
+        padding: 44px 0 36px;
+    }
+
+    .page-main > .learning-section,
+    .page-main > .music-section,
+    .page-main > .work-section {
+        padding-top: 40px;
+        padding-bottom: 56px;
+    }
+
+    .quiet-card,
+    .blog-preview-grid .quiet-card {
+        padding: 24px 22px 26px;
+    }
+}
